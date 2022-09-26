@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -16,10 +17,8 @@ public class User {
     private double balance;
     private String phoneNumber;
 
-    @ManyToOne
-    private Events events;
-    @OneToMany
-    private List<Expenses> expenses= new ArrayList<>();
+    @ManyToMany(mappedBy = "users")
+    private List<Event> events=new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -53,20 +52,18 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public Events getEvents() {
+    public List<Event> getEvents() {
         return events;
     }
 
-    public void setEvents(Events events) {
+    public void setEvents(List<Event> events) {
         this.events = events;
     }
 
-    public List<Expenses> getExpenses() {
-        return expenses;
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                '}';
     }
-
-    public void setExpenses(List<Expenses> expenses) {
-        this.expenses = expenses;
-    }
-
 }

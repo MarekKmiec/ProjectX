@@ -13,14 +13,16 @@
 
 </head>
 <body>
+<h3>Dodawanie użytkownika</h3>
 <form:form method="post" action="/userform/add" modelAttribute="user">
     name: <form:input path="name"/><br>
     Balance: <form:input path="balance" /><br>
     phoneNumber: <form:input path="phoneNumber" /><br>
-<%--    <form:hidden path="id" />--%>
+    <form:hidden path="id" />
     <%--    <form:errors path="*" />--%>
     <button type="submit">Save</button>
 </form:form>
+
 
 </body>
 </html>

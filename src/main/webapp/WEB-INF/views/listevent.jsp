@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-  <title>Title</title>
+  <title>Event</title>
 </head>
 <style>
   th {
@@ -31,26 +31,29 @@
   }
 </style>
 <body>
-
-<<table>
+<h3>Lista wydarzeń</h3>
+<table>
   <tr>
-    <th>Name</th>
+    <th>Nazwa Wydarzenia </th>
     <th>Data</th>
     <th>Users</th>
 
   </tr>
-  <c:forEach items="${events}" var="e">
+  <c:forEach items="${event}" var="e">
     <tr>
       <td><c:out value="${e.name}"/></td>
       <td><c:out value="${e.date}"/></td>
-<%--      <td><c:out value="${e.users}"/></td>--%>
+      <td><c:out value="${e.users}"/></td>
 
       <td><a href="<c:url value="/event/delete/${e.id}"/>"
-             onclick="return confirm('Are you sure you want to delete user \'${e.name}\'?')">Delete</a>
+             onclick="return confirm('Are you sure you want to delete event \'${e.name}\'?')">Delete</a>
         <br><a href="<c:url value="/event/edit/${e.id}"/>">Edit</a></td>
     </tr>
   </c:forEach>
 </table>
-<a href="<c:url value="/event/add"/>">Add Event</a>
+<a href="<c:url value="/event/add"/>">Add Event</a><br>
+<a href="<c:url value="/userform/list"/>">List User</a><br>
+<a href="<c:url value="/expense/list"/>">List Expenses</a><br>
+
 </body>
 </html>

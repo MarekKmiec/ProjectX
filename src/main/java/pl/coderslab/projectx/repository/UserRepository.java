@@ -10,19 +10,6 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
 
-    User save(User user);
-    User saveAndFlush(User user);
-
-    List<User> findAll();
-
-    Optional<User> findById(Long id);
-
-    void deleteById(Long id);
-
-
-
-
-
 
 
 }

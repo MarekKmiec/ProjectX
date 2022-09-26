@@ -4,18 +4,19 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
-public class Expenses {
+public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private double  cost;
+    private double cost;
 
     private String description;
 
-    private double allCost;
-    @OneToMany
-    private List<User> users = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.EAGER)
+    private User user;
+    @ManyToOne
+    private Event event;
 
     public Long getId() {
         return id;
@@ -41,19 +42,31 @@ public class Expenses {
         this.description = description;
     }
 
-    public double getAllCost() {
-        return allCost;
+    public User getUser() {
+        return user;
     }
 
-    public void setAllCost(double allCost) {
-        this.allCost = allCost;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public Event getEvent() {
+        return event;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+    public Expense(double cost, String description, User user, Event event) {
+
+        this.cost = cost;
+        this.description = description;
+        this.user = user;
+        this.event = event;
+    }
+
+    public Expense() {
+
     }
 }

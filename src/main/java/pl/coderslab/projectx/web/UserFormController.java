@@ -26,9 +26,9 @@ public class UserFormController {
 
     @PostMapping("/add")
     public String saveUser(User user){
-        if(user.getId()==null){
-            userServive.saveUser(user);
-        } else
+//        if(user.getId()==null){
+//            userServive.saveUser(user);
+//        } else
 
         userServive.saveUser(user);
         return "redirect:/userform/list";
@@ -38,7 +38,7 @@ public class UserFormController {
         model.addAttribute("user", userServive.findAll());
         return "listuser";
     }
-    @GetMapping("/edit/{id}")                               //edytuje ale zapisuje jako nowy obietk
+    @GetMapping("/edit/{id}")
     public String edit(@PathVariable long id, Model model){
         model.addAttribute("user",userServive.findById(id));
         return "form";

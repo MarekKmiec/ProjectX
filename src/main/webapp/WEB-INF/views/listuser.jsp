@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>User</title>
 </head>
 <style>
   th {
@@ -31,10 +31,10 @@
   }
 </style>
 <body>
-
-<<table>
+<h3>Lista użytkowników</h3>
+<table>
   <tr>
-    <th>Name</th>
+    <th>User name</th>
     <th>Balance</th>
     <th>phoneNumber</th>
 
@@ -51,6 +51,8 @@
     </tr>
   </c:forEach>
 </table>
-<a href="<c:url value="/userform/add"/>">Add User</a>
+<a href="<c:url value="/userform/add"/>">Add User</a><br>
+<a href="<c:url value="/expense/list"/>">List Expenses</a><br>
+<a href="<c:url value="/event/list"/>">ListEvent</a><br>
 </body>
 </html>
