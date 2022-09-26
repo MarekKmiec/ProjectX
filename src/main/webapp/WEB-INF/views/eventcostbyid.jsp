@@ -10,34 +10,38 @@
 <html>
 <head>
     <title>Expense</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 <style>
-    th {
-        color: rgb(255, 255, 255);
-        border: 1px solid rgb(219, 219, 219);
-        font-weight: normal;
-        background-color: rgb(124, 124, 125);
-    }
-    table {
-        border-collapse: collapse;
-    }
-    td {
-        color: rgb(77, 77, 79);
-        border: 1px solid rgb(219, 219, 219);
-        background-color: rgb(231, 231, 231);
-    }
-    td, th {
-        padding: 15px 20px;
-    }
+    /*th {*/
+    /*    color: rgb(255, 255, 255);*/
+    /*    border: 1px solid rgb(219, 219, 219);*/
+    /*    font-weight: normal;*/
+    /*    background-color: rgb(124, 124, 125);*/
+    /*}*/
+    /*table {*/
+    /*    border-collapse: collapse;*/
+    /*}*/
+    /*td {*/
+    /*    color: rgb(77, 77, 79);*/
+    /*    border: 1px solid rgb(219, 219, 219);*/
+    /*    background-color: rgb(231, 231, 231);*/
+    /*}*/
+    /*td, th {*/
+    /*    padding: 15px 20px;*/
+    /*}*/
 </style>
 <body>
 <h3>Lista wydatków event</h3>
-<table>
+<table class="table table-striped ">
     <tr>
-        <th>Cost</th>
-        <th>User</th>
-        <th>Event</th>
-        <th>Descriptions</th>
+        <th scope="col">Cost</th>
+        <th scope="col">User</th>
+        <th scope="col">Event</th>
+        <th scope="col">Descriptions</th>
+        <th scope="col">Action</th>
         <%--        <th>AllCost</th>--%>
 
     </tr>
@@ -61,10 +65,11 @@
     <a href="<c:url value="/event/list"/>">ListEvent</a><br>
 </table><br>
 
-<table>
+<table class="table table-striped ">
     <tr>
-        <th>name</th>
-        <th>cost</th>
+        <th scope="col">name</th>
+        <th scope="col">cost</th>
+        <th scope="col">subCost</th>
 <%--        <th>Event</th>--%>
 <%--        <th>Descriptions</th>--%>
         <%--        <th>AllCost</th>--%>
@@ -74,6 +79,7 @@
         <tr>
             <td><c:out value="${e.key}"/></td>
             <td><c:out value="${e.value}"/></td>
+            <td><c:out value="${e.value-summary.avg}"/></td>
 <%--            <td><c:out value="${e.event}"/></td>--%>
 <%--            <td><c:out value="${e.description}"/></td>--%>
                 <%--            <td><c:out value="${e.allCost}"/></td>--%>

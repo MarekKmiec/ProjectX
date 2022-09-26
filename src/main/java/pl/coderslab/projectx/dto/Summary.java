@@ -5,6 +5,8 @@ public class Summary {
     private double sumUser = 0;
     private double sumAmount = 0;
 
+    private double subCost = 0;
+
     public double getAvg() {
         return sumUser > 0 ? sumAmount / sumUser : 0;
     }
