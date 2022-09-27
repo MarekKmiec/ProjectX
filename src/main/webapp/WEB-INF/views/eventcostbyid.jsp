@@ -12,7 +12,8 @@
     <title>Expense</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 <style>
     /*th {*/
@@ -51,8 +52,7 @@
             <td><c:out value="${e.user}"/></td>
             <td><c:out value="${e.event}"/></td>
             <td><c:out value="${e.description}"/></td>
-                <%--            <td><c:out value="${e.allCost}"/></td>--%>
-                <%--      <td><c:out value="${e.users}"/></td>--%>
+
 
             <td><a href="<c:url value="/expense/delete/${e.id}"/>"
                    onclick="return confirm('Are you sure you want to delete expense \'${e.description}\'?')">Delete</a>
@@ -63,16 +63,15 @@
     <a href="<c:url value="/expense/add"/>">Add Expenses</a><br>
     <a href="<c:url value="/userform/list"/>">List User</a><br>
     <a href="<c:url value="/event/list"/>">ListEvent</a><br>
-</table><br>
+</table>
+<br>
 
 <table class="table table-striped ">
     <tr>
         <th scope="col">name</th>
         <th scope="col">cost</th>
         <th scope="col">subCost</th>
-<%--        <th>Event</th>--%>
-<%--        <th>Descriptions</th>--%>
-        <%--        <th>AllCost</th>--%>
+
 
     </tr>
     <c:forEach items="${allusercost}" var="e">
@@ -80,20 +79,49 @@
             <td><c:out value="${e.key}"/></td>
             <td><c:out value="${e.value}"/></td>
             <td><c:out value="${e.value-summary.avg}"/></td>
-<%--            <td><c:out value="${e.event}"/></td>--%>
-<%--            <td><c:out value="${e.description}"/></td>--%>
-                <%--            <td><c:out value="${e.allCost}"/></td>--%>
-                <%--      <td><c:out value="${e.users}"/></td>--%>
 
-<%--            <td><a href="<c:url value="/expense/delete/${e.id}"/>"--%>
-<%--                   onclick="return confirm('Are you sure you want to delete expense \'${e.description}\'?')">Delete</a>--%>
-<%--                <br><a href="<c:url value="/expense/edit/${e.id}"/>">Edit</a></td>--%>
         </tr>
     </c:forEach>
 
-<%--    <a href="<c:url value="/expense/add"/>">Add Expenses</a><br>--%>
-<%--    <a href="<c:url value="/userform/list"/>">List User</a><br>--%>
-<%--    <a href="<c:url value="/event/list"/>">ListEvent</a><br>--%>
-</table>
 
-${summary.sumAmount} / ${summary.sumUser} =${summary.avg}
+</table>
+<br>
+
+${summary.sumAmount} / ${summary.sumUser} =${summary.avg}<br>
+
+<table class="table table-striped ">
+    <tr>
+        <th scope="col">nazwa wydarzenia</th>
+        <th scope="col">id wydarzenia</th>
+
+
+    </tr>
+    <c:forEach items="${allEventByIdMap}" var="e">
+        <tr>
+            <td><c:out value="${e.key}"/></td>
+            <td><c:out value="${e.value}"/></td>
+
+
+        </tr>
+    </c:forEach>
+
+
+</table>
+<br>
+
+<table class="table table-striped ">
+    <tr>
+        <th scope="col">do oddania</th>
+        <th scope="col">oddajacy</th>
+    </tr>
+    <c:forEach items="${Bild}" var="e">
+        <tr>
+            <td><c:out value="${e.key.userName}"/> <c:out value="${e.key.cost}"/></td>
+            <td>
+                <c:forEach items="${e.value}" var="o">
+                    <c:out value="${o.userName}"/> <c:out value="${o.cost}"/><br>
+                </c:forEach>
+            </td>
+        </tr>
+    </c:forEach>
+</table>

@@ -6,10 +6,14 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.projectx.domain.Event;
 import pl.coderslab.projectx.domain.Expense;
 import pl.coderslab.projectx.domain.User;
+import pl.coderslab.projectx.dto.ExpenseDTO;
+import pl.coderslab.projectx.dto.Summary;
 import pl.coderslab.projectx.service.EventService;
 import pl.coderslab.projectx.service.ExpenseService;
 import pl.coderslab.projectx.service.UserService;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -79,7 +83,36 @@ public class ExpenseFormController {
         model.addAttribute("allexpense", expenses);
         Map<String, Double> userCost = expenseService.allUserCost(expenses);
         model.addAttribute("allusercost", userCost);
-        model.addAttribute("summary", expenseService.allCostSummary(userCost));
+        Summary sum = expenseService.allCostSummary(userCost);
+        model.addAttribute("summary", sum);
+        model.addAttribute("allEventByIdMap", eventService.allEventAndId(eventService.findAll()));
+
+
+
+        Map<ExpenseDTO, List<ExpenseDTO>> listBildMap = new HashMap<>();
+
+        ExpenseDTO expense1 = new ExpenseDTO(1, "Ivan", 35.0);
+        ExpenseDTO expense4 = new ExpenseDTO(4, "Maly", -30.0);
+        ExpenseDTO expense5 = new ExpenseDTO(5, "Maly", -5.0);
+
+        ExpenseDTO expense2 = new ExpenseDTO(2, "Kwiatkowski", 60.0);
+        ExpenseDTO expense3 = new ExpenseDTO(3, "Krzysio", -60.0);
+
+        List<ExpenseDTO> listBDTo = new ArrayList<>();
+        listBDTo.add(expense4);
+        listBDTo.add(expense5);
+        listBildMap.put(expense1, listBDTo);
+
+        List<ExpenseDTO> listBDTo2 = new ArrayList<>();
+        listBDTo2.add(expense3);
+        listBildMap.put(expense2, listBDTo2);
+
+
+        model.addAttribute("Bild", listBildMap);
+
+
+        model.addAttribute("Bild", expenseService.bild(userCost,sum));
+
         return "eventcostbyid";
     }
 

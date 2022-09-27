@@ -5,7 +5,10 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.projectx.domain.Event;
 import pl.coderslab.projectx.repository.EventRepository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @Service
 @Transactional
 public class EventService {
@@ -29,5 +32,14 @@ public class EventService {
 
     public void delete(Long id){
         eventRepository.deleteById(id);
+    }
+
+    public Map<String,Long> allEventAndId(List<Event> events){
+        Map<String,Long> allEventByIdMap=new HashMap<>();
+        for (Event event : events) {
+            String nameKey=event.getName();
+            allEventByIdMap.put(nameKey,event.getId());
+        }
+        return  allEventByIdMap;
     }
 }

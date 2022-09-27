@@ -26,10 +26,6 @@ public class UserFormController {
 
     @PostMapping("/add")
     public String saveUser(User user){
-//        if(user.getId()==null){
-//            userServive.saveUser(user);
-//        } else
-
         userServive.saveUser(user);
         return "redirect:/userform/list";
     }

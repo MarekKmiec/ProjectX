@@ -1,6 +1,7 @@
 package pl.coderslab.projectx.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.*;
 
 @Entity
