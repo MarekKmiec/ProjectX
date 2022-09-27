@@ -16,26 +16,10 @@
           integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 <style>
-    /*th {*/
-    /*    color: rgb(255, 255, 255);*/
-    /*    border: 1px solid rgb(219, 219, 219);*/
-    /*    font-weight: normal;*/
-    /*    background-color: rgb(124, 124, 125);*/
-    /*}*/
-    /*table {*/
-    /*    border-collapse: collapse;*/
-    /*}*/
-    /*td {*/
-    /*    color: rgb(77, 77, 79);*/
-    /*    border: 1px solid rgb(219, 219, 219);*/
-    /*    background-color: rgb(231, 231, 231);*/
-    /*}*/
-    /*td, th {*/
-    /*    padding: 15px 20px;*/
-    /*}*/
+
 </style>
 <body>
-<h3>Lista wydatków event</h3>
+<h3>Lista wydatków wydarzenia</h3>
 <table class="table table-striped ">
     <tr>
         <th scope="col">Cost</th>
@@ -87,7 +71,8 @@
 </table>
 <br>
 
-${summary.sumAmount} / ${summary.sumUser} =${summary.avg}<br>
+Średni koszt  jednego uczestnika: ${summary.sumAmount} / ${summary.sumUser} =${summary.avg}<br>
+<br>
 
 <table class="table table-striped ">
     <tr>
@@ -108,11 +93,11 @@ ${summary.sumAmount} / ${summary.sumUser} =${summary.avg}<br>
 
 </table>
 <br>
-
+<h3>Finalne rozliczenie</h3>
 <table class="table table-striped ">
     <tr>
-        <th scope="col">do oddania</th>
-        <th scope="col">oddajacy</th>
+        <th scope="col">Do oddania</th>
+        <th scope="col">Oddający</th>
     </tr>
     <c:forEach items="${Bild}" var="e">
         <tr>

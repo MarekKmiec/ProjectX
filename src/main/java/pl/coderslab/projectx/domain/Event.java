@@ -19,7 +19,11 @@ public class Event {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<User> users = new HashSet<>();
 
-    @OneToMany(mappedBy = "event")
+    @OneToMany(mappedBy = "event",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+
     private List<Expense> expenses = new ArrayList<>();
 
     public Long getId() {
