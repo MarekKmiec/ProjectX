@@ -77,13 +77,17 @@ public class ExpenseService {
         return summary;
     }
 
-    public static double round(double value, int places) {
-        if (places < 0) throw new IllegalArgumentException();
-
-        BigDecimal bd = BigDecimal.valueOf(value);
-        bd = bd.setScale(places, RoundingMode.HALF_UP);
-        return bd.doubleValue();
+    public static double roundTo2DecimalPlace(double value) {
+        return Math.round(value * 100.0) / 100.0;
     }
+
+//    public static double round(double value, int places) {
+//        if (places < 0) throw new IllegalArgumentException();
+//
+//        BigDecimal bd = BigDecimal.valueOf(value);
+//        bd = bd.setScale(places, RoundingMode.HALF_UP);
+//        return bd.doubleValue();
+//    }
 
     //    Hyber	95.0	63.6
 //    Kwietnik	0.0	-31.4
@@ -92,8 +96,8 @@ public class ExpenseService {
 //    Ivann	12.0	-19.4
     public Map<ExpenseDTO, List<ExpenseDTO>> bild(Map<String, Double> userCostsMap, Summary sum) {
         Map<String, Double> user2Sum = new HashMap<>();
-        for (String key : userCostsMap.keySet()) {
-            user2Sum.put(key, userCostsMap.get(key) - round(sum.getAvg(),2));
+        for (String key : userCostsMap.keySet()) {  // zwracamy zbior imion
+            user2Sum.put(key, userCostsMap.get(key) - sum.getAvg()); //Imie , sumUser- AVG
         }
 
         Map<ExpenseDTO, List<ExpenseDTO>> listBildMap = new HashMap<>(); // do zwrocenia finalna mapa
@@ -106,6 +110,8 @@ public class ExpenseService {
                 givenMap.put(key, user2Sum.get(key));
             }
         }
+
+
         String toRemove = "";
         for (ExpenseDTO komuDTO : listBildMap.keySet()) {
             Double doOddania = komuDTO.cost; // 63
@@ -125,23 +131,23 @@ public class ExpenseService {
                 if(doOddania == 0 ){
                     break;
                 }
-                Double oddanieMax = Math.abs(givenMap.get(givenName)); // 31
+                Double oddanieMax = Math.abs(givenMap.get(givenName)); // 31,4 Kwietnik
                 System.out.println("givenName "+givenName);
                 if (doOddania > oddanieMax) {
                     System.out.println("> doOddania "+doOddania);
-                    listBildMap.get(komuDTO).add(new ExpenseDTO(index++, givenName, oddanieMax));
+                    listBildMap.get(komuDTO).add(new ExpenseDTO(index++, givenName, roundTo2DecimalPlace(oddanieMax)));
                     doOddania = doOddania - oddanieMax;
                     toRemove += ";"+givenName;
                     continue;
                 } else if (doOddania == oddanieMax) {
                     System.out.println("= doOddania "+doOddania);
-                    listBildMap.get(komuDTO).add(new ExpenseDTO(index++, givenName, oddanieMax));
+                    listBildMap.get(komuDTO).add(new ExpenseDTO(index++, givenName, roundTo2DecimalPlace(oddanieMax)));
                     toRemove = ";"+givenName;
                     doOddania = 0d;
                     continue;
                 } else { // <
                     System.out.println("< doOddania "+doOddania);
-                    listBildMap.get(komuDTO).add(new ExpenseDTO(index++, givenName, doOddania));
+                    listBildMap.get(komuDTO).add(new ExpenseDTO(index++, givenName, roundTo2DecimalPlace(oddanieMax)));
                     givenMap.put(givenName, oddanieMax - doOddania);
                     doOddania = 0d;
                     continue;

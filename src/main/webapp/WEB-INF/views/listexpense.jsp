@@ -44,8 +44,8 @@
     <c:forEach items="${expense}" var="e">
         <tr>
             <td><c:out value="${e.cost}"/></td>
-            <td><c:out value="${e.user}"/></td>
-            <td><c:out value="${e.event}"/></td>
+            <td><c:out value="${e.user.name}"/></td>
+            <td><c:out value="${e.event.name}"/></td>
             <td><c:out value="${e.description}"/></td>
 <%--            <td><c:out value="${e.allCost}"/></td>--%>
                 <%--      <td><c:out value="${e.users}"/></td>--%>

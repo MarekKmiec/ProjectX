@@ -33,10 +33,9 @@
     <c:forEach items="${allexpense}" var="e">
         <tr>
             <td><c:out value="${e.cost}"/></td>
-            <td><c:out value="${e.user}"/></td>
-            <td><c:out value="${e.event}"/></td>
+            <td><c:out value="${e.user.name}"/></td>
+            <td><c:out value="${e.event.name}"/></td>
             <td><c:out value="${e.description}"/></td>
-
 
             <td><a href="<c:url value="/expense/delete/${e.id}"/>"
                    onclick="return confirm('Are you sure you want to delete expense \'${e.description}\'?')">Delete</a>
@@ -49,25 +48,20 @@
     <a href="<c:url value="/event/list"/>">ListEvent</a><br>
 </table>
 <br>
-
+<h3>Pośrednie rozliczenie</h3>
 <table class="table table-striped ">
     <tr>
         <th scope="col">name</th>
         <th scope="col">cost</th>
         <th scope="col">subCost</th>
-
-
     </tr>
     <c:forEach items="${allusercost}" var="e">
         <tr>
             <td><c:out value="${e.key}"/></td>
             <td><c:out value="${e.value}"/></td>
             <td><c:out value="${e.value-summary.avg}"/></td>
-
         </tr>
     </c:forEach>
-
-
 </table>
 <br>
 
