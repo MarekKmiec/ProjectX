@@ -44,8 +44,9 @@
     </c:forEach>
 
     <a href="<c:url value="/expense/add"/>">Add Expenses</a><br>
+    <a href="<c:url value="/expense/list"/>">List Expenses</a><br>
     <a href="<c:url value="/userform/list"/>">List User</a><br>
-    <a href="<c:url value="/event/list"/>">ListEvent</a><br>
+    <a href="<c:url value="/event/list"/>">List Event</a><br>
 </table>
 <br>
 <h3>Pośrednie rozliczenie</h3>
@@ -65,12 +66,27 @@
 </table>
 <br>
 
-Średni koszt  jednego uczestnika: ${summary.sumAmount} / ${summary.sumUser} =${summary.avg}<br>
+
+<TABLE class="table table-striped ">
+    <tr>
+        <th scope="col"> Całkowity koszt wydarzenia </th>
+        <th scope="col">Ilosc uczestników wydarzenia</th>
+        <th scope="col">Średni koszt na jednego uczestnika</th>
+    </tr>
+    <tr>
+        <td>${summary.sumAmount} </td>
+        <td>${summary.sumUser} </td>
+        <td>${summary.avg} </td>
+    </tr>
+<%--    ${summary.sumAmount} / ${summary.sumUser} =${summary.avg}--%>
+</TABLE>
+
+
 <br>
 
 <table class="table table-striped ">
     <tr>
-        <th scope="col">nazwa wydarzenia</th>
+        <th scope="col">Nazwa wydarzenia</th>
         <th scope="col">id wydarzenia</th>
 
 
@@ -93,7 +109,7 @@
         <th scope="col">Do oddania</th>
         <th scope="col">Oddający</th>
     </tr>
-    <c:forEach items="${Bild}" var="e">
+    <c:forEach items="${Billd}" var="e">
         <tr>
             <td><c:out value="${e.key.userName}"/> <c:out value="${e.key.cost}"/></td>
             <td>

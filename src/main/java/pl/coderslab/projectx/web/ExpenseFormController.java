@@ -89,7 +89,7 @@ public class ExpenseFormController {
 
 
 
-        Map<ExpenseDTO, List<ExpenseDTO>> listBildMap = new HashMap<>();
+        Map<ExpenseDTO, List<ExpenseDTO>> listBilldMap = new HashMap<>();
 
         ExpenseDTO expense1 = new ExpenseDTO(1, "Ivan", 35.0);
         ExpenseDTO expense4 = new ExpenseDTO(4, "Maly", -30.0);
@@ -101,17 +101,17 @@ public class ExpenseFormController {
         List<ExpenseDTO> listBDTo = new ArrayList<>();
         listBDTo.add(expense4);
         listBDTo.add(expense5);
-        listBildMap.put(expense1, listBDTo);
+        listBilldMap.put(expense1, listBDTo);
 
         List<ExpenseDTO> listBDTo2 = new ArrayList<>();
         listBDTo2.add(expense3);
-        listBildMap.put(expense2, listBDTo2);
+        listBilldMap.put(expense2, listBDTo2);
 
 
-        model.addAttribute("Bild", listBildMap);
+        model.addAttribute("Billd", listBilldMap);
 
 
-        model.addAttribute("Bild", expenseService.bild(userCost,sum));
+        model.addAttribute("Billd", expenseService.billd(userCost,sum));
 
         return "eventcostbyid";
     }

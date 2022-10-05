@@ -19,7 +19,7 @@ public class UserController {
     public String addUser(){
         User user = new User();
         user.setName("Tomoo");
-        user.setBalance(0.0);
+//        user.setBalance(0.0);
         user.setPhoneNumber("555555555");
         userServive.saveUser(user);
         return user.toString();
