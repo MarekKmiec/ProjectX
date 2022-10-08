@@ -1,6 +1,8 @@
 package pl.coderslab.projectx.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,8 @@ public class User {
 
     private String name;
     private double balance;
+   @NotNull
+    @Size(min = 9, max = 12)
     private String phoneNumber;
 
     @ManyToMany(mappedBy = "users")

@@ -139,6 +139,7 @@ public class ExpenseService {
                     doOddania = doOddania - oddanieMax;
                     toRemove += ";"+givenName;
                     continue;
+
                 } else if (doOddania == oddanieMax) {
                     System.out.println("= doOddania "+doOddania);
                     listBilldMap.get(komuDTO).add(new ExpenseDTO(index++, givenName, roundTo2DecimalPlace(oddanieMax)));
@@ -147,10 +148,10 @@ public class ExpenseService {
                     continue;
                 } else { // <
                     System.out.println("< doOddania "+doOddania);
-                    listBilldMap.get(komuDTO).add(new ExpenseDTO(index++, givenName, roundTo2DecimalPlace(oddanieMax)));
+                    listBilldMap.get(komuDTO).add(new ExpenseDTO(index++, givenName, roundTo2DecimalPlace(doOddania)));
                     givenMap.put(givenName, oddanieMax - doOddania);
                     doOddania = 0d;
-                    continue;
+
                 }
             }
 
